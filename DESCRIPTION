@@ -1,13 +1,15 @@
 Package: bibincentr
-Title: What the Package Does (One Line, Title Case)
+Title: Examines author collaboration incentives
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Henrik",
+           family = "Karlstrøm",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: What license it uses
+           email = "henrik.karlstrom@ntnu.no",
+           comment = c(ORCID = "0000-0002-9942-4326"))
+Description: Examines author collaboration incentives in Norway.
+License: Text: CC-BY 4.0
+         Code: MIT License
+         Data: CC-0
 Encoding: UTF-8
 LazyData: true
