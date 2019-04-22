@@ -8,8 +8,6 @@ Authors@R:
            email = "henrik.karlstrom@ntnu.no",
            comment = c(ORCID = "0000-0002-9942-4326"))
 Description: Examines author collaboration incentives in Norway.
-License: Text: CC-BY 4.0
-         Code: MIT License
-         Data: CC-0
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
