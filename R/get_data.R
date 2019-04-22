@@ -4,13 +4,13 @@
 #' publications with at least one Norwegian author
 #'
 #'
-#' @param x 
+#' @param x string
 #'
 #' @return
 #' @export
 #'
 #' @examples
-#' 
+#' get_data("test")
 
 get_data <- function(x) {
   print(x)
