@@ -10,5 +10,15 @@
 A project to identify the effects of incentives for collaborative
 academic publishing in Norway.
 
-Outline \* Collecting publication data and creating informative priors
-\* Retroactive forecasting \* Comparison with posterior result
+Outline
+
+  - Collecting publication data and creating informative priors
+  - Retroactive forecasting
+  - Comparison with posterior result
+
+## The package
+
+This package contains the code, data and text for the *International
+co-authoring incentives in Norway* project.
+
+## Installation
