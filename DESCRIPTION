@@ -15,7 +15,9 @@ RoxygenNote: 6.1.1
 Imports: 
     dplyr,
     httr,
-    jsonlite
+    jsonlite,
+    magrittr,
+    rlang
 Suggests: 
     knitr,
     rmarkdown

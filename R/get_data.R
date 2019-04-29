@@ -22,6 +22,10 @@
 #' 
 #' @param page,per_page Numeric, pagination parameters for
 #' the API.
+#' 
+#' @param fields A string specifying the set of fields the
+#' API should return, in order for it to return the time
+#' created field.
 #'
 #' @return The function returns a data frame of unique 
 #' publications with the following columns:
@@ -30,16 +34,20 @@
 #' in CRIStin
 #' 
 #' @export
-#'
+#' 
+#' @importFrom magrittr "%>%"
+#' @importFrom rlang .data
+#' 
 #' @examples
-#' get_data("test")
+#' get_data(unit = "194.14.30.0")
 
 get_data <- function(unit,
                      category = "(ARTICLE or MONOGRAPHACA or ANTHOLOGYACA)",
-                     published_since = 2004,
+                     published_since = 2019,
                      published_before = 2019,
                      page = 1,
-                     per_page = 999) {
+                     per_page = 999,
+                     fields = "all") {
   
   counter <- 0
   total <- 1
@@ -47,15 +55,17 @@ get_data <- function(unit,
   
   while(counter < total) {
     
-    data <- GET(url = "https://api.cristin.no/v2/results?", 
+    data <- httr::GET(url = "https://api.cristin.no/v2/results?", 
                 query = list(unit = unit, 
                              category = category,
                              published_since = published_since,
                              published_before = published_before, 
                              per_page = per_page,
-                             page = page))
+                             page = page,
+                             fields = fields))
     
-    if(status_code(data) != 200 || data$headers$`x-total-count` == 0) {
+    if(httr::status_code(data) != 200 || 
+       data$headers$`x-total-count` == 0) {
       
       counter <- total + 1
       return(NA)
@@ -67,17 +77,19 @@ get_data <- function(unit,
       page <- page + 1
       
       #
-      content <- fromJSON(content(data, "text"))
+      content <- jsonlite::fromJSON(
+        httr::content(data, "text"))
       
       content <- content %>%
-        select(cristin_result_id, 
-               date_published, 
-               contributors) %>%
-        mutate(contributors = contributors$url)
+        dplyr::mutate(Date = .data[["created"]][["date"]],
+                      Contributors = .data[["contributors"]][["url"]]) %>%
+        dplyr::select(.data[["cristin_result_id"]], 
+                      .data[["Date"]], 
+                      .data[["Contributors"]])
       
-      frame <- bind_rows(frame, content)
+      frame <- dplyr::bind_rows(frame, content)
       
     }
   }
-  return(ramme)
+  return(frame)
 }
