@@ -1,7 +1,7 @@
 #' Get publication data from the CRIStin API
 #'
 #' Fetches authorship data for peer-reviewed academic
-#' publications with at least one Norwegian author
+#' publications with at least one Norwegian author.
 #'
 #'
 #' @param unit A string representing an institution or
@@ -29,9 +29,13 @@
 #'
 #' @return The function returns a data frame of unique 
 #' publications with the following columns:
-#' - 'ID': numeric, a unique identifier for each publication
-#' - 'Date': POSIXtc, the date the publication was registered
-#' in CRIStin
+#' - 'ID':            numeric, a unique identifier for 
+#'                    each publication
+#' - 'Date':          POSIXtc, the date the publication 
+#'                    was registered in CRIStin
+#' - 'Contributors':  string, a URL for the author 
+#'                    affiliation information in the API
+#' 
 #' 
 #' @export
 #' 
@@ -39,11 +43,11 @@
 #' @importFrom rlang .data
 #' 
 #' @examples
-#' get_data(unit = "194.14.30.0")
+#' get_data(unit = "194.14.30.0", published_since = 2019)
 
 get_data <- function(unit,
                      category = "(ARTICLE or MONOGRAPHACA or ANTHOLOGYACA)",
-                     published_since = 2019,
+                     published_since = 2004,
                      published_before = 2019,
                      page = 1,
                      per_page = 999,
