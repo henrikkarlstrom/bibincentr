@@ -2,14 +2,6 @@
 #'
 #' Fetches authorship data for peer-reviewed academic
 #' publications with at least one Norwegian author.
-#'
-#'
-#' @param unit A string representing an institution or
-#' sub-unit of an institution in the CRIStin. It takes
-#' the form of four values separated by periods, where
-#' each value represents one unit at that level in the
-#' institutional hierarchy of a Norwegian research
-#' institution.
 #' 
 #' @param category A string specifying that the API should
 #' only return peer-reviewed publications - CRIStin contains
@@ -43,7 +35,7 @@
 #' @importFrom rlang .data
 #' 
 #' @examples
-#' get_data(published_since = 2019)
+#' get_data(published_since = 2019, category = "MONOGRAPHACA")
 
 get_data <- function(category = "(ARTICLE or MONOGRAPHACA or ANTHOLOGYACA)",
                      published_since = 2004,
