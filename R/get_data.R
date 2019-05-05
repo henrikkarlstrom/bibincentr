@@ -43,10 +43,9 @@
 #' @importFrom rlang .data
 #' 
 #' @examples
-#' get_data(unit = "194.14.30.0", published_since = 2019)
+#' get_data(published_since = 2019)
 
-get_data <- function(unit,
-                     category = "(ARTICLE or MONOGRAPHACA or ANTHOLOGYACA)",
+get_data <- function(category = "(ARTICLE or MONOGRAPHACA or ANTHOLOGYACA)",
                      published_since = 2004,
                      published_before = 2019,
                      page = 1,
@@ -60,8 +59,7 @@ get_data <- function(unit,
   while(counter < total) {
     
     data <- httr::GET(url = "https://api.cristin.no/v2/results?", 
-                query = list(unit = unit, 
-                             category = category,
+                query = list(category = category,
                              published_since = published_since,
                              published_before = published_before, 
                              per_page = per_page,
