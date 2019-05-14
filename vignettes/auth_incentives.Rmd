@@ -16,10 +16,11 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
+```{r setup, include = FALSE}
 library(bibincentr)
 ```
 
-# International co-authoring incentives in Norway
+## Introduction
 
 The aim of this project is to explore the impact of a change in how internatinal co-publishing is rewarded in the Norwegian academic publishing incentive system. It uses data collected from the Current Research Information System in Norway (CRIStin) database to examine whether a new policy change aimed at incentivising international collaboration has affected patterns of co-authorship among Norwegian researchers.
+
