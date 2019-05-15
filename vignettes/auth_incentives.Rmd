@@ -24,3 +24,46 @@ library(bibincentr)
 
 The aim of this project is to explore the impact of a change in how internatinal co-publishing is rewarded in the Norwegian academic publishing incentive system. It uses data collected from the Current Research Information System in Norway (CRIStin) database to examine whether a new policy change aimed at incentivising international collaboration has affected patterns of co-authorship among Norwegian researchers.
 
+## Disposition
+
+[describing context]
+
+* Design of the Norwegian publishing indicator
+* Result of its introduction in 2004
+* Political push for incentivising and rewarding international collaboration
+* Change in the indicator in the fall of 2015
+
+
+[describing data]
+
+* Raw data distribution
+    * Number of observations per time unit
+    * Share of international collaborations, varying over choice of time units
+
+
+[describing model]
+
+* Counterfactual Bayesian structured time series
+    * Is this univariate, or is there a plausible regressor? Field of research, perhaps? See headaches re: time.
+* The model predicts a counterfactual probability, meaning a plausible prediction (or maybe rather best guess) of how the response metric would have evolved in the absence of an intervention. This takes into account the underlying trend present in the prior data, and quantifies 
+
+
+
+[researcher degrees of freedom]
+
+* Time intervals/lags
+    1. Setting time registered as time of publication
+    2. Setting a start date for effects of incentive change
+
+Headache: The decision of which authors to collaborate with is made far earlier than the time of publication. There is considerable delay in the publications process, but this differs across research fields, so it is plausible that any intervention effects would show up at different times for differing fields. In addition, the Cristin API contains information about the date when the publication was registered in the database, not the date of publication. 
+
+    
+* Removing publications where the only affiliations that are not identifiably Norwegian are "Unknown Institution"
+
+Headache: Do not know the extent of publications where there are unknown institutional affiliations but no known international collaborator. There is a good chance that most if not all unknown institutions are non-Norwegian, so if the number of such publications is large this could lead to systematic under-reporting of international collaborations. On the other hand, these reports are the basis of official statistics, so it probably represents the best approximation available.
+
+
+[results]
+
+
+[discussion]
