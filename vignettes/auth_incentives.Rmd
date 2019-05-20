@@ -44,12 +44,18 @@ The aim of this project is to explore the impact of a change in how internatinal
 [describing model]
 
 * Counterfactual Bayesian structured time series
-    * Is this univariate, or is there a plausible regressor? Field of research, perhaps? See headaches re: time.
-* The model predicts a counterfactual probability, meaning a plausible prediction (or maybe rather best guess) of how the response metric would have evolved in the absence of an intervention. This takes into account the underlying trend present in the prior data, and quantifies 
+    * Contains a time series of our variable of interest, as well as several plausibly comparable control groups (i.e. negighbouring countries' international collaboration research output share in the same period)
+* The model predicts a counterfactual probability, meaning a plausible prediction (or maybe rather best guess) of how the response metric would have evolved in the absence of an intervention, modeled from the time of the intervention. This takes into account the underlying trend present in the prior data.
 
 
 
 [researcher degrees of freedom]
+
+* Choice of source for bibliometric data
+Headache: Cristin is a given, since it contains a full record of Norwegian academic publication output. However, choice of data source for control countries can play a role.
+
+Possible solution: Collect the data from all three available data sources and take the full join to be the best possible data source. A priority must be assigned, as there is likely to be differences in ascribed dates of publication for the individual publications.
+
 
 * Time intervals/lags
     1. Setting time registered as time of publication
@@ -57,7 +63,16 @@ The aim of this project is to explore the impact of a change in how internatinal
 
 Headache: The decision of which authors to collaborate with is made far earlier than the time of publication. There is considerable delay in the publications process, but this differs across research fields, so it is plausible that any intervention effects would show up at different times for differing fields. In addition, the Cristin API contains information about the date when the publication was registered in the database, not the date of publication. 
 
-    
+Possible solution: Find range of estimates of time from submission to publishing to use as range of actual post-intervention period, e.g. given that the policy change was announced in late 2015, perhaps the actual post-intervention period only starts 12 months later, when a certain share of publications could be reasonably expected to have been started.
+
+
+* Choice of control groups
+
+Headache: While it makes sense to use similar countries with similar policies as control, it relies on slightly less comprehensive data. Most probably, this will overestimate the share of international collaboration for the control countries, as the database has better coverage of English-language publications.
+
+Possible solution: It is doubtful whether there is grounds to believe that the international bias has strengthened with time, so the fact that a bias exists might not affect the trend analysis itself. However, a possible adjustment is to take the available data about Norwegian publishing in the same source, compare it to the comprehensive Cristin data, and adjust the international collaboration shares in the control contries proportionate to the difference between the two Norwegian datasets.
+
+
 * Removing publications where the only affiliations that are not identifiably Norwegian are "Unknown Institution"
 
 Headache: Do not know the extent of publications where there are unknown institutional affiliations but no known international collaborator. There is a good chance that most if not all unknown institutions are non-Norwegian, so if the number of such publications is large this could lead to systematic under-reporting of international collaborations. On the other hand, these reports are the basis of official statistics, so it probably represents the best approximation available.

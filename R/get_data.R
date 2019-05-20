@@ -35,11 +35,11 @@
 #' @importFrom rlang .data
 #' 
 #' @examples
-#' get_data(published_since = 2019, category = "MONOGRAPHACA")
+#' get_data(created_since = 2019-01-01, category = "MONOGRAPHACA")
 
 get_data <- function(category = "(ARTICLE or MONOGRAPHACA or ANTHOLOGYACA)",
-                     published_since = 2004,
-                     published_before = 2019,
+                     created_since = 2010-01-01,
+                     create_before = 2019-12-31,
                      page = 1,
                      per_page = 999,
                      fields = "all") {
@@ -52,8 +52,8 @@ get_data <- function(category = "(ARTICLE or MONOGRAPHACA or ANTHOLOGYACA)",
     
     data <- httr::GET(url = "https://api.cristin.no/v2/results?", 
                 query = list(category = category,
-                             published_since = published_since,
-                             published_before = published_before, 
+                             created_since = created_since,
+                             created_before = created_before, 
                              per_page = per_page,
                              page = page,
                              fields = fields))
