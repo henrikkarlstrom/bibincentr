@@ -22,3 +22,4 @@ This package contains the code, data and text for the *International
 co-authoring incentives in Norway* project.
 
 ## Installation
+Connecting a new computer to the repo
